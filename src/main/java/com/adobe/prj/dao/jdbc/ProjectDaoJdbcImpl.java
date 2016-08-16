@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.adobe.prj.dao;
+package com.adobe.prj.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.adobe.prj.dao.ProjectDao;
+import com.adobe.prj.dao.ProjectDetails;
 import com.adobe.prj.entity.Project;
 
 /**

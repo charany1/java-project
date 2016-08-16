@@ -8,8 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.adobe.prj.dao.jdbc.DBUtil;
+
 /**
  * @author rahujai
+ * @author danchara
  *
  */
 public class EmployeeDetails {
@@ -22,8 +25,14 @@ public class EmployeeDetails {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			rs.next();
-			System.out.println(rs.getInt(0) + " " + rs.getInt(1));
+			
+			
 			total = rs.getInt(1);
+			rs.close();
+			stmt.close();
+			con.close();
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

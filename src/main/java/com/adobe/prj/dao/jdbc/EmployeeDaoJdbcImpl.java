@@ -1,4 +1,4 @@
-package com.adobe.prj.dao;
+package com.adobe.prj.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.adobe.prj.dao.EmployeeDao;
+import com.adobe.prj.dao.EmployeeDetails;
 import com.adobe.prj.entity.Employee;
 
 public class EmployeeDaoJdbcImpl implements EmployeeDao {
@@ -23,16 +25,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 	
 	@Override
 	public void addEmployee() {
-		/*if(EmployeeDetails.total==0) {
-			String SQL = "CREATE TABLE employees (id NUMERIC(10), first_name VARCHAR(20), last_name VARCHAR(20), email VARCHAR(50), p_id NUMERIC(10), is_pm BOOLEAN)";
-			try {
-				Statement stmt = con.createStatement();
-				stmt.executeUpdate(SQL);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}*/
+		
 		String first_name = "emp1"; // TODO read from console
 		String last_name = "loyee2"; // TODO read from console
 		String email = "emp@loyee.com"; // TODO read from console
@@ -60,6 +53,8 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
+			
+			
 			while(rs.next()) {
 				Employee e = new Employee(rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
 				e.setId(rs.getInt("id"));

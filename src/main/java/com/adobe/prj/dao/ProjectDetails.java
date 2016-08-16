@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.adobe.prj.dao.jdbc.DBUtil;
+
 /**
  * @author rahujai
  *
@@ -15,6 +17,10 @@ import java.sql.Statement;
 public class ProjectDetails {
 	public static int total;
 	static{
+		
+		System.out.println("Static block chala");
+		
+		
 		//TODO total = Database.totalEntries
 		try {
 			Connection con = DBUtil.getConnection();
@@ -22,8 +28,9 @@ public class ProjectDetails {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			rs.next();
-			System.out.println(rs.getInt(0) + " " + rs.getInt(1));
+			//System.out.println(rs.getInt(0) + " " + rs.getInt(1));
 			total = rs.getInt(1);
+			System.out.println("Total in ED:"+total);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

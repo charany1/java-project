@@ -1,4 +1,4 @@
-package com.adobe.prj.dao;
+package com.adobe.prj.dao.jdbc;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
