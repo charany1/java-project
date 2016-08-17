@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.adobe.prj.dao.EmployeeDao;
-import com.adobe.prj.dao.EmployeeDetails;
 import com.adobe.prj.entity.Employee;
 
 public class EmployeeDaoJdbcImpl implements EmployeeDao {
@@ -43,7 +42,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		EmployeeDetails.total++;
+		
 	}
 
 	@Override

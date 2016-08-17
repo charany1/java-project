@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.adobe.prj.dao.ProjectDao;
-import com.adobe.prj.dao.ProjectDetails;
 import com.adobe.prj.entity.Project;
 
 /**
@@ -54,7 +53,6 @@ public class ProjectDaoJdbcImpl implements ProjectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		ProjectDetails.total++;
 	}
 
 	@Override
