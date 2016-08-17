@@ -34,7 +34,7 @@ public class DBUtil {
 		}
 	}
 	
-	public static void releaseConnecton(Connection con){
+	public static void releaseConnection(Connection con){
 		if(con!= null){
 			try{
 				con.close();
