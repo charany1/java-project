@@ -1,2 +1,3 @@
-/*C17*/SET SCHEMA PUBLIC
-DISCONNECT
+/*C2*/SET SCHEMA PUBLIC
+drop table employees
+drop table projects
