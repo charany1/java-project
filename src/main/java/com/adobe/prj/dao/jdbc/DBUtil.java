@@ -1,14 +1,16 @@
 /**
  * 
  */
-package com.adobe.prj.dao;
+package com.adobe.prj.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * @author rahujai
+ * @author danchara
  *
  */
 
@@ -20,6 +22,27 @@ public class DBUtil {
 
 	public static Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(URL, USER, PWD);
+	}
+	
+	public static void releaseStatement(Statement smt){
+		if(smt!= null){
+			try{
+				smt.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void releaseConnection(Connection con){
+		if(con!= null){
+			try{
+				con.close();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
 	}
 	
 

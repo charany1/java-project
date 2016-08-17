@@ -1,4 +1,4 @@
-package com.adobe.prj.dao;
+package com.adobe.prj.dao.jdbc;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.adobe.prj.dao.EmployeeDao;
 import com.adobe.prj.entity.Employee;
 
 public class EmployeeDaoJdbcImpl implements EmployeeDao {
@@ -24,6 +25,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 	}
 	
 	@Override
+<<<<<<< HEAD:src/main/java/com/adobe/prj/dao/EmployeeDaoJdbcImpl.java
 	public void addEmployee(Employee e) {
 		/*if(EmployeeDetails.total==0) {
 			String SQL = "CREATE TABLE employees (id NUMERIC(10), first_name VARCHAR(20), last_name VARCHAR(20), email VARCHAR(50), p_id NUMERIC(10), is_pm BOOLEAN)";
@@ -35,6 +37,10 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 				e1.printStackTrace();
 			}
 		}*/
+=======
+	public void addEmployee() {
+		
+>>>>>>> a94ce1f9fd6bb6c58939aed6e1c68046eabb33ae:src/main/java/com/adobe/prj/dao/jdbc/EmployeeDaoJdbcImpl.java
 		String first_name = "emp1"; // TODO read from console
 		String last_name = "loyee2"; // TODO read from console
 		String email = "emp@loyee.com"; // TODO read from console
@@ -50,7 +56,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		EmployeeDetails.total++;
+		
 	}
 
 	@Override
@@ -60,6 +66,8 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
+			
+			
 			while(rs.next()) {
 				Employee e = new Employee(rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
 				e.setId(rs.getInt("id"));
