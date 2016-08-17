@@ -5,7 +5,7 @@ import java.util.List;
 import com.adobe.prj.entity.Employee;
 
 public interface EmployeeDao {
-	public void addEmployee();
+	public void addEmployee(Employee e);
 
 	public List<Employee> getExistingProjectManagers();
 

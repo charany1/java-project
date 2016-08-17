@@ -22,8 +22,9 @@ public class ProjectDetails {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(SQL);
 			rs.next();
-			System.out.println(rs.getInt(0) + " " + rs.getInt(1));
+			//System.out.println(rs.getInt(0) + " " + rs.getInt(1));
 			total = rs.getInt(1);
+			//System.out.println(total);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

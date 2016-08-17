@@ -3,28 +3,25 @@
  */
 package com.adobe.prj.entity;
 
-import com.adobe.prj.annotations.Column;
-import com.adobe.prj.annotations.Table;
-import com.adobe.prj.dao.ProjectDetails;
-
 /**
  * @author rahujai
+ * @author anurjain
  *
  */
-@Table(name="projects")
 public class Project {
 	private int id;
 	private String name;
-	private int pm_id;
-	public Project(String name) {
+	private boolean hasProjectManager;
+	public Project() {
+	}
+	public Project(int id, String name, String client, boolean hasProjectManager) {
+		this.id = id;
 		this.name = name;
-		this.id = ProjectDetails.total + 1;
-		this.pm_id = -1;
+		this.hasProjectManager = hasProjectManager;
 	}
 	/**
 	 * @return the id
 	 */
-	@Column(name="id", type="NUMERIC(10)")
 	public final int getId() {
 		return id;
 	}
@@ -37,7 +34,6 @@ public class Project {
 	/**
 	 * @return the name
 	 */
-	@Column(name="name")
 	public final String getName() {
 		return name;
 	}
@@ -48,16 +44,17 @@ public class Project {
 		this.name = name;
 	}
 	/**
-	 * @return the pm_id
+	 * @return the hasProjectManager
 	 */
-	@Column(name="pm_id", type="NUMERIC(10)")
-	public final int getPm_id() {
-		return pm_id;
+	public final boolean isHasProjectManager() {
+		return hasProjectManager;
 	}
 	/**
-	 * @param pm_id the pm_id to set
+	 * @param hasProjectManager the hasProjectManager to set
 	 */
-	public final void setPm_id(int pm_id) {
-		this.pm_id = pm_id;
+	public final void setHasProjectManager(boolean hasProjectManager) {
+		this.hasProjectManager = hasProjectManager;
 	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.adobe.prj.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.adobe.prj.entity.Employee;
 
@@ -22,7 +24,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 	}
 	
 	@Override
-	public void addEmployee() {
+	public void addEmployee(Employee e) {
 		/*if(EmployeeDetails.total==0) {
 			String SQL = "CREATE TABLE employees (id NUMERIC(10), first_name VARCHAR(20), last_name VARCHAR(20), email VARCHAR(50), p_id NUMERIC(10), is_pm BOOLEAN)";
 			try {
@@ -36,16 +38,14 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 		String first_name = "emp1"; // TODO read from console
 		String last_name = "loyee2"; // TODO read from console
 		String email = "emp@loyee.com"; // TODO read from console
-		Employee e = new Employee(first_name, last_name, email);
+		
 		try {
 			String SQL = "INSERT INTO employees (id, first_name, last_name, email, p_id, is_pm) VALUES (?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(SQL);
 			ps.setInt(1, e.getId());
-			ps.setString(2, e.getFirst_name());
-			ps.setString(3, e.getLast_name());
-			ps.setString(4, e.getEmail());
-			ps.setInt(5, e.getP_id());
-			ps.setBoolean(6, e.isIs_pm());
+			ps.setString(2, e.getName());
+			ps.setString(3, e.getEmail());
+			ps.setInt(4, e.getRole());
 			ps.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -83,7 +83,7 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 			ps.setInt(1, pm_id);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			emp = new Employee(rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
+			emp = new Employee(rs.getString("name"),rs.getString("email"));
 			emp.setId(rs.getInt("id"));
 			emp.setIs_pm(rs.getBoolean("is_pm"));
 			emp.setP_id(rs.getInt("p_id"));
@@ -91,7 +91,6 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return emp;
 	}
 

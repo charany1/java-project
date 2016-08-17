@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.adobe.prj.entity.Project;
 
@@ -31,6 +32,11 @@ public class ProjectDaoJdbcImpl implements ProjectDao {
 	public void addProject() {
 		String name = "project1"; // TODO read from console
 		Project p = new Project(name);
+		System.out.println("Enter the name of the project");
+		Scanner inputreader=new Scanner(System.in);
+		String input=null;
+		input=inputreader.nextLine();
+		p.setName(input);
 		/*if(ProjectDetails.total==0) {
 			String SQL = "CREATE TABLE projects (id NUMERIC(10), name VARCHAR(20), pm_id NUMERIC(10))";
 			try {
@@ -57,7 +63,7 @@ public class ProjectDaoJdbcImpl implements ProjectDao {
 
 	@Override
 	public List<Project> getExistingProjects() {
-		String SQL = "SELECT name FROM projects WHERE pm_id=-1";
+		String SQL = "SELECT name,id,pm_id FROM projects WHERE pm_id=-1";
 		List<Project> result = new ArrayList<Project>();
 		try {
 			Statement stmt = con.createStatement();
@@ -77,7 +83,7 @@ public class ProjectDaoJdbcImpl implements ProjectDao {
 
 	@Override
 	public List<Project> getAllProjects() {
-		String SQL = "SELECT name FROM projects";
+		String SQL = "SELECT name,id,pm_id FROM projects";
 		List<Project> result = new ArrayList<Project>();
 		try {
 			Statement stmt = con.createStatement();
