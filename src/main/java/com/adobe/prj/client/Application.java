@@ -3,8 +3,10 @@
  */
 package com.adobe.prj.client;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import com.adobe.prj.dao.EmployeeDao;
 import com.adobe.prj.dao.EmployeeDaoFactory;
@@ -18,7 +20,7 @@ import com.adobe.prj.entity.Project;
  *
  * @version 1.0
  */
-public class ProjectAssigningApp {
+public class Application {
 
 	/**
 	 * @param args
@@ -80,16 +82,48 @@ public class ProjectAssigningApp {
 	public static void main(String[] args) {
 		
 		//Class.forName("ProjectDetails").getClassLoader().loadClass()
-		
-		pd.addProject();
-		
-//		ed.addEmployee();
-//		
-//		assignPm();
-//		
-//		addStaff();
-//		
-//		output();
+		int input;
+		System.out.println("Project Management System");
+		do{
+			
+			System.out.println("1.Add Project");
+			System.out.println("2.Add Employee");
+			System.out.println("3.Assign Project Manager");
+			System.out.println("4.Add Employees[Staff]");
+			System.out.println("5.Display Project Details");
+			System.out.println("0.Quit");
+			System.out.println("Enter your choice");
+			Scanner in = new Scanner(System.in);
+			input = in.nextInt();
+			switch(input){
+			case 1:pd.addProject();
+			       System.out.println("Project has been added to the database");
+			       break;
+			case 2:ed.addEmployee();
+			       System.out.println("Employee has been added to the database");
+			       break;
+			case 3:assignPm();
+		           System.out.println("Project manager has been assigned to the project");
+		           break;
+		    case 4:addStaff();
+	               System.out.println("Employees have been added to the project");
+	               break;
+		    case 5:output();
+		           break;
+		    case 0:for(int i=0;i<1000;i++){
+		    	       System.out.println("\b");
+		            }
+		    	   System.exit(0);
+		    	   break;
+		    default:System.out.println("Invalid input");
+		            break;
+			}
+			//System.out.print("\033[H\033[2J");
+
+			/*for(int i=0;i<1000;i++){
+	    	       System.out.println("\b");
+	            }*/
+		}while(true);
 	}
 
 }
